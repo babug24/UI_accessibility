@@ -1,0 +1,32 @@
+from playwright.sync_api import sync_playwright
+
+def validate_dropdown_click(url):
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=True)
+        page = browser.new_page()
+        page.goto(url, timeout=20000)
+        
+        dropdowns = page.query_selector_all("select, [role='listbox'], [aria-haspopup='listbox']")
+        
+        if not dropdowns:
+            print("⚠️ No dropdowns found.")
+            browser.close()
+            return
+
+        for i, dropdown in enumerate(dropdowns, start=1):
+            try:
+                dropdown.click()
+                print(f"✅ Dropdown {i} clicked successfully.")
+                
+                options_visible = page.query_selector_all("option, [role='option']")
+                if options_visible:
+                    print(f"   → {len(options_visible)} options detected.")
+                else:
+                    print("   ⚠️ Options not visible after click.")
+            except Exception as e:
+                print(f"❌ Dropdown {i} click failed: {e}")
+
+        browser.close()
+
+# Example usage
+validate_dropdown_click("https://www.nationwide.com")

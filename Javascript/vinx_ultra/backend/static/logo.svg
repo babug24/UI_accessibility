@@ -1,0 +1,14 @@
+<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="VINX ULTRA logo">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1">
+      <stop offset="0%" stop-color="#0a66ff"/>
+      <stop offset="100%" stop-color="#084fd1"/>
+    </linearGradient>
+  </defs>
+  <rect width="120" height="120" rx="18" fill="url(#g)" />
+  <g transform="translate(30,30)" fill="#fff" opacity="0.95">
+    <path d="M15 0 L30 30 L0 30 Z"/>
+    <circle cx="40" cy="40" r="8" />
+    <rect x="6" y="36" width="48" height="8" rx="4"/>
+  </g>
+</svg>
